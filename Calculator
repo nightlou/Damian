@@ -1,0 +1,66 @@
+import java.util.Scanner;
+class Calculator {
+  public static void main(String[] args) {
+  
+    Scanner user = new Scanner(System.in);
+    
+      boolean continueProgram = true;
+      while(continueProgram){
+			  System.out.println("\nPlease enter operation: \n \nAdding \nSubstraction \nMulticipation \nDivision \n");
+			  String operation = user.next();
+		  while (!operation.equals("Adding") && !operation.equals("Substraction") && !operation.equals("Multicipation") &&  !operation.equals("Division")){
+				System.out.println("Choose correct operation! \n");
+				operation = user.next();
+				}
+			System.out.println("\nPlease enter first number: ");
+			float firstnumber = user.nextFloat();
+			System.out.println("Please enter second number: ");
+			float secondnumber = user.nextFloat();
+				
+			System.out.println(" ");
+		
+			switch (operation) {
+			  case "Adding" : {
+					System.out.println("Result = " + (firstnumber + secondnumber));
+					break;
+				}
+				case "Substraction" : {
+						System.out.println("Result = " + (firstnumber - secondnumber));
+						break;
+				}
+				case "Multicipation" : {
+					System.out.println("Result = " + (firstnumber * secondnumber));
+					break;
+				}
+				case "Division" : {
+				  while (secondnumber == 0){
+						System.out.println("Unable to divide by 0. Please enter correct second number: \n ");
+						secondnumber = user.nextFloat();
+					}
+				  float result = firstnumber/secondnumber;
+					result = Math.round(result * 100f) / 100f;
+                     
+					System.out.println("Result = " + (result));
+					break;
+				}
+				default: {
+						System.out.println("Choose correct operation. ");
+						break;
+				}
+			}
+		
+		  System.out.println("\nDo you like to continue? \nEnter Yes or No \n ");
+			String endingCommand = "Yes" + "No";
+			endingCommand = user.next();
+			
+			while(!endingCommand.equals("Yes") && !endingCommand.equals("No")) {
+				System.out.println("\nPlease enter Yes or No:\n ");
+				endingCommand=user.next();
+			}
+			if(endingCommand.equals("No")) {
+				continueProgram = false;
+				System.out.println("\nThanks for using my calculator :)");
+			}
+		}
+	}				
+}
